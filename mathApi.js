@@ -14,7 +14,7 @@ app.get('/add', (req, res) => {
   try {
     const numbers = parseNumbers(req.query.numbers);
     const vysledek = numbers.reduce((a, b) => a + b, 0);
-    res.json({ "výsledek": vysledek });
+    res.json({ "Součet je": vysledek });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -24,7 +24,7 @@ app.get('/sub', (req, res) => {
   try {
     const numbers = parseNumbers(req.query.numbers);
     const vysledek = numbers.slice(1).reduce((a, b) => a - b, numbers[0]);
-    res.json({ "výsledek": vysledek });
+    res.json({ "Rozdíl je": vysledek });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -34,7 +34,7 @@ app.get('/mult', (req, res) => {
   try {
     const numbers = parseNumbers(req.query.numbers);
     const vysledek = numbers.reduce((a, b) => a * b, 1);
-    res.json({ "výsledek": vysledek });
+    res.json({ "Násobek je": vysledek });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -47,7 +47,7 @@ app.get('/div', (req, res) => {
       if (b === 0) throw new Error('Dělení nulou není povoleno.');
       return a / b;
     }, numbers[0]);
-    res.json({ "výsledek": vysledek });
+    res.json({ "Dělitel je": vysledek });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -57,7 +57,7 @@ app.get('/pow', (req, res) => {
   try {
     const numbers = parseNumbers(req.query.numbers);
     const vysledek = numbers.slice(1).reduce((a, b) => Math.pow(a, b), numbers[0]);
-    res.json({ "výsledek": vysledek });
+    res.json({ "Mocnitel je": vysledek });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -74,7 +74,7 @@ app.get('/root', (req, res) => {
       throw new Error('Číslo musí být větší než 0');
     }
     const vysledek = Math.pow(number, 1 / root);
-    res.json({ "výsledek": vysledek });
+    res.json({ "Odmocnitel je": vysledek });
   } catch (error) {
     res.json({ error: error.message });
   }
